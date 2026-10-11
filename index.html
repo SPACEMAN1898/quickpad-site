@@ -11,6 +11,7 @@
 <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230071e3'/%3E%3Crect x='14' y='14' width='16' height='16' rx='4' fill='white'/%3E%3Crect x='34' y='14' width='16' height='16' rx='4' fill='white' opacity='.7'/%3E%3Crect x='14' y='34' width='16' height='16' rx='4' fill='white' opacity='.7'/%3E%3Crect x='34' y='34' width='16' height='16' rx='4' fill='white' opacity='.45'/%3E%3C/svg%3E">
+<script>document.documentElement.className+=" js"</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -167,7 +168,7 @@ h2{font-size:clamp(36px,5.6vw,64px);line-height:1.06;font-weight:700;letter-spac
 .step b{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;font-size:17px;margin-bottom:18px}
 .step h3{font-size:22px;letter-spacing:-.02em;margin-bottom:8px}
 .step p{color:var(--ink-2);font-size:16px}
-.step code,.dl code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:13px;background:var(--bg-alt);border-radius:6px;padding:1px 6px;word-break:break-all}
+.step code,.dl code,.others .fine code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:13px;background:var(--bg-alt);border-radius:6px;padding:1px 6px;word-break:break-all}
 .fine{max-width:720px;margin:34px auto 0;text-align:center;color:var(--ink-2);font-size:15px}
 @media (max-width:860px){.steps{grid-template-columns:1fr}}
 
@@ -183,11 +184,33 @@ h2{font-size:clamp(36px,5.6vw,64px);line-height:1.06;font-weight:700;letter-spac
 .install li{display:flex;gap:16px;align-items:flex-start;font-size:17px}
 .install li span{flex:none;width:30px;height:30px;border-radius:50%;border:2px solid var(--accent);color:var(--accent);display:grid;place-items:center;font-weight:700;font-size:14px}
 .dl .fine{text-align:left;margin:26px 0 0;max-width:none}
-.sha{margin-top:16px;font-size:14px;color:var(--ink-2)}
-.sha summary{cursor:pointer;color:var(--link)}
-.sha p{margin-top:8px}
-.other{text-align:center;margin-top:30px;color:var(--ink-2)}
-@media (max-width:600px){.dl{padding:26px 20px}.dl-main{flex-wrap:wrap}.dl-main .btn{margin-left:0;width:100%;text-align:center}}
+.sha{margin-top:16px;font-size:13px;color:var(--ink-2);overflow-wrap:anywhere}
+.dl-main .btn[aria-disabled="true"]{font-size:17px;background:var(--line);color:var(--ink-2);cursor:not-allowed;filter:none}
+.dl-hint{margin-top:4px;font-size:15px;color:var(--ink)}
+.dl-explain{margin-top:22px;font-size:17px;color:var(--ink-2)}
+.dl-explain strong{color:var(--ink)}
+.dl-main > div{min-width:0}
+/* other downloads */
+.others{max-width:1024px;margin:64px auto 0}
+.others h3{font-size:28px;letter-spacing:-.03em;text-align:center}
+.others > .fine{margin-top:22px}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px;margin-top:28px}
+.dcard{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px 24px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.dcard h4{font-size:20px;letter-spacing:-.02em}
+.dcard .dneeds{color:var(--ink-2);font-size:14px}
+.dcard .dfile,.dcard .dsoon{margin-top:10px;font-weight:600;font-size:15px;overflow-wrap:anywhere}
+.dcard .dsoon{color:var(--ink-2)}
+.dcard .dmeta{font-size:14px;color:var(--ink-2)}
+.dcard .dhint{font-size:14px;color:var(--ink)}
+.dcard .dsha{font-size:12px;color:var(--ink-2);margin-top:auto;padding-top:10px;overflow-wrap:anywhere}
+.dcard .dsha code,.sha code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11.5px;background:var(--bg-alt);border-radius:6px;padding:1px 5px;word-break:break-all}
+.ask{margin-top:12px;border-radius:14px;background:color-mix(in srgb,var(--accent) 10%,var(--card));border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);padding:14px 16px;font-size:15px}
+.ask p{margin-bottom:10px}
+.ask .row{display:flex;gap:10px;flex-wrap:wrap}
+.ask a,.ask button{font:inherit;font-size:14px;font-weight:500;border-radius:980px;padding:7px 15px;cursor:pointer;border:0}
+.ask a{background:var(--accent);color:#fff}.ask a:hover{text-decoration:none;filter:brightness(1.08)}
+.ask button{background:transparent;color:var(--link);border:1px solid var(--line)}
+@media (max-width:600px){.dl{padding:26px 20px}.dl-main{flex-wrap:wrap}.dl-main .btn{margin-left:0;width:100%;text-align:center}.others{margin-top:48px}}
 
 /* quote + cta */
 .quote{font-size:clamp(30px,4.4vw,48px);font-weight:700;letter-spacing:-.035em;line-height:1.12;text-align:center;max-width:860px;margin:0 auto}
@@ -200,9 +223,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 footer a{color:var(--ink-2)}
 
 /* reveal */
-.rv{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
-.rv.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.caret{animation:none}html{scroll-behavior:auto}}
+/* hidden-until-scrolled only when JS runs, so the page is readable with JS off */
+.js .rv{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}.caret{animation:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
@@ -227,7 +251,7 @@ footer a{color:var(--ink-2)}
     <h1 class="rv">Notes, one click<br><span class="grad">at a time.</span></h1>
     <p class="lede rv">A panel of buttons that types for you. Click one and your note goes into Cliniko, or any other program, exactly where your cursor is.</p>
     <div class="ctas rv">
-      <a class="btn" href="#download">Download for Linux Mint</a>
+      <a class="btn" id="hero-cta" href="#download">Download Quickpad</a>
       <a class="more" href="#features">See what it does</a>
     </div>
   </div>
@@ -383,25 +407,55 @@ Plan: <em>{Dictate Say the plan, then click Stop}</em></div>
   <div class="wrap">
     <span class="kicker rv">Download</span>
     <h2 class="rv">Ready in a minute.</h2>
-    <p class="sub rv">Made for Linux Mint. One file, one double-click.</p>
-    <div class="dl rv">
-      <div class="dl-main">
-        <div class="appicon" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-        <div>
-          <strong>Quickpad 3.2</strong>
-          <span>For Linux Mint 21 and newer · 114 KB</span>
-        </div>
-        <a class="btn" href="download/quickpad_3.2.0_all.deb" download>Download</a>
+    <p class="sub rv">For Windows, Mac and Linux. One download, a couple of clicks.</p>
+    <!-- Filled in by the script below for the visitor's platform; stays hidden with JS off. -->
+    <div class="dl" id="dl-primary" hidden></div>
+    <div class="others" id="dl-others">
+      <h3 id="dl-others-title">All downloads</h3>
+      <div class="dgrid" id="dl-grid">
+<!-- BEGIN generated downloads: run `python3 tools/sync-downloads.py` after editing DOWNLOADS -->
+<article class="dcard" data-key="windows" data-os="windows" data-available="true">
+  <h4>Windows</h4>
+  <p class="dneeds">Windows 10 or 11</p>
+  <a class="dfile" href="download/quickpad-3.2.0-windows.zip" download>quickpad-3.2.0-windows.zip</a>
+  <p class="dmeta">Version 3.2.0 · 113 KB</p>
+  <p class="dhint">Extract All, then double-click install-windows.bat. It installs Python if needed.</p>
+  <p class="dsha">SHA-256 <code>c95a75af5a84586b251370cf2033a18bec3c6bfd1f73e15e4d1c820c81f5a4b9</code></p>
+</article>
+<article class="dcard" data-key="mac" data-os="mac" data-available="true">
+  <h4>Mac</h4>
+  <p class="dneeds">macOS, Apple chip or Intel</p>
+  <a class="dfile" href="download/quickpad-3.2.0-mac.zip" download>quickpad-3.2.0-mac.zip</a>
+  <p class="dmeta">Version 3.2.0 · 114 KB</p>
+  <p class="dhint">Install Python from python.org, then run install-mac.command from the unzipped folder.</p>
+  <p class="dsha">SHA-256 <code>e73602f8ecfcf5f874159131d6f8b76ad1041f7fe63681641d8257d231d61dec</code></p>
+</article>
+<article class="dcard" data-key="deb" data-os="linux" data-available="true">
+  <h4>Linux Mint / Ubuntu</h4>
+  <p class="dneeds">Linux Mint 21 and newer, or Ubuntu</p>
+  <a class="dfile" href="download/quickpad_3.2.0_all.deb" download>quickpad_3.2.0_all.deb</a>
+  <p class="dmeta">Version 3.2.0 · 114 KB</p>
+  <p class="dhint">Double-click it, then click Install.</p>
+  <p class="dsha">SHA-256 <code>4f6fbfb12d88a8ef03e3bbd4c2f3b1f58f0cbf8e1ffc77fb8e5aa1348f6e6e88</code></p>
+</article>
+<article class="dcard" data-key="linux" data-os="linux" data-available="true">
+  <h4>Other Linux</h4>
+  <p class="dneeds">Arch, Fedora, openSUSE, Omarchy and others</p>
+  <a class="dfile" href="download/quickpad-3.2.0-linux.zip" download>quickpad-3.2.0-linux.zip</a>
+  <p class="dmeta">Version 3.2.0 · 115 KB</p>
+  <p class="dhint">Unzip, then run ./install-linux.sh in a terminal.</p>
+  <p class="dsha">SHA-256 <code>5ceb317b66ab30116e1eda2361ce305a13176a51349c1dfb81b583a6ab636741</code></p>
+</article>
+<article class="dcard" data-key="android" data-os="android" data-available="false">
+  <h4>Android</h4>
+  <p class="dneeds">Android phones and tablets</p>
+  <span class="dsoon">Coming soon</span>
+  <p class="dmeta">Version 1.0.0</p>
+</article>
+<!-- END generated downloads -->
       </div>
-      <ol class="install">
-        <li><span>1</span><div><strong>Download</strong> the file above. It saves to your Downloads folder.</div></li>
-        <li><span>2</span><div><strong>Double-click it.</strong> Linux Mint's package installer opens.</div></li>
-        <li><span>3</span><div><strong>Click Install</strong> and type your computer password. Quickpad is then in your menu.</div></li>
-      </ol>
-      <p class="fine">Updates arrive inside Quickpad: click <em>Check for updates</em> at the bottom of the panel. Every update is signed, and Quickpad refuses one that isn't. The first time it opens, Quickpad offers to set up dictation (a few minutes, needs the internet).</p>
-      <details class="sha"><summary>Check the download</summary><p>SHA-256 <code>4f6fbfb12d88a8ef03e3bbd4c2f3b1f58f0cbf8e1ffc77fb8e5aa1348f6e6e88</code></p></details>
+      <p class="fine">Other Linux (Arch, Fedora, openSUSE, Omarchy): unzip the Linux zip and run <code>./install-linux.sh</code>. It finds your package manager and works on X11 or Wayland. Every zip has a READ-ME.txt with the full steps.</p>
     </div>
-    <p class="other rv">Using Windows or a Mac? <a href="https://praxentislabs.com.au/#build">Get in touch</a> and we'll set it up with you.</p>
   </div>
 </section>
 
@@ -415,7 +469,7 @@ Plan: <em>{Dictate Say the plan, then click Stop}</em></div>
 <section class="alt final">
   <div class="wrap">
     <h2 class="rv">Spend less time typing.</h2>
-    <p class="sub rv">Quickpad is built by Praxentis Labs for clinics. Download it for Linux Mint today.</p>
+    <p class="sub rv">Quickpad is built by Praxentis Labs for clinics. Download it for Windows, Mac or Linux today.</p>
     <div class="ctas rv">
       <a class="btn" href="#download">Download Quickpad</a>
       <a class="more" href="https://praxentislabs.com.au">More from Praxentis Labs</a>
@@ -430,6 +484,149 @@ Plan: <em>{Dictate Say the plan, then click Stop}</em></div>
   </div>
 </footer>
 
+<script>
+/* ===== Release metadata: the ONE place to edit for a new release. =====
+   size is in bytes; sha256 is the file's SHA-256 (tools/build-downloads.sh prints both for the zips;
+   `sha256sum download/<file>` for the .deb and .apk). The block between the markers must stay valid JSON.
+   ANDROID: when download/quickpad-android-1.0.0.apk is uploaded, set its size and sha256 and change
+   "available" to true. That one flag turns the "Coming soon" slot into a real download.
+   After editing, run `python3 tools/sync-downloads.py` so the no-JavaScript list matches. */
+var DOWNLOADS = /*BEGIN DOWNLOADS*/{
+  "windows":  {"os": "windows", "label": "Windows", "needs": "Windows 10 or 11",
+               "file": "quickpad-3.2.0-windows.zip", "version": "3.2.0", "size": 115859,
+               "sha256": "c95a75af5a84586b251370cf2033a18bec3c6bfd1f73e15e4d1c820c81f5a4b9",
+               "hint": "Extract All, then double-click install-windows.bat. It installs Python if needed.", "available": true},
+  "mac":      {"os": "mac", "label": "Mac", "needs": "macOS, Apple chip or Intel",
+               "file": "quickpad-3.2.0-mac.zip", "version": "3.2.0", "size": 116432,
+               "sha256": "e73602f8ecfcf5f874159131d6f8b76ad1041f7fe63681641d8257d231d61dec",
+               "hint": "Install Python from python.org, then run install-mac.command from the unzipped folder.", "available": true},
+  "deb":      {"os": "linux", "label": "Linux Mint / Ubuntu", "needs": "Linux Mint 21 and newer, or Ubuntu",
+               "file": "quickpad_3.2.0_all.deb", "version": "3.2.0", "size": 116652,
+               "sha256": "4f6fbfb12d88a8ef03e3bbd4c2f3b1f58f0cbf8e1ffc77fb8e5aa1348f6e6e88",
+               "hint": "Double-click it, then click Install.", "available": true},
+  "linux":    {"os": "linux", "label": "Other Linux", "needs": "Arch, Fedora, openSUSE, Omarchy and others",
+               "file": "quickpad-3.2.0-linux.zip", "version": "3.2.0", "size": 117614,
+               "sha256": "5ceb317b66ab30116e1eda2361ce305a13176a51349c1dfb81b583a6ab636741",
+               "hint": "Unzip, then run ./install-linux.sh in a terminal.", "available": true},
+  "android":  {"os": "android", "label": "Android", "needs": "Android phones and tablets",
+               "file": "quickpad-android-1.0.0.apk", "version": "1.0.0", "size": null,
+               "sha256": null,
+               "hint": "Open the file, allow installs from your browser if asked, then tap Install.", "available": false}
+}/*END DOWNLOADS*/;
+
+(function(){
+  var PRIMARY = {windows: 'windows', mac: 'mac', linux: 'deb', android: 'android'};
+  var NAMES = {windows: 'Windows', mac: 'a Mac', linux: 'Linux', android: 'Android', ios: 'an iPhone or iPad'};
+  var STEPS = {
+    windows: ['<strong>Download</strong> the zip above. It saves to your Downloads folder.',
+              '<strong>Right-click it</strong> and choose <em>Extract All…</em>, then <em>Extract</em>.',
+              '<strong>Double-click install-windows.bat</strong> in the Quickpad folder. If Windows says it protected your PC, click <em>More info</em>, then <em>Run anyway</em>. It installs Python first if it isn’t there.'],
+    mac:     ['<strong>Download</strong> the zip above. Safari unzips it into a Quickpad folder in Downloads.',
+              '<strong>Install Python</strong> 3.12 or newer from <a href="https://www.python.org/downloads/macos/">python.org</a>, then run <em>Install Certificates</em> in its folder. (Skip this if you use Homebrew.)',
+              '<strong>Open Terminal</strong>, paste <code>bash ~/Downloads/Quickpad/install-mac.command</code> and press Return. Then allow Quickpad in System Settings › Privacy &amp; Security › Accessibility.'],
+    linux:   ['<strong>Download</strong> the file above. It saves to your Downloads folder.',
+              '<strong>Double-click it.</strong> Linux Mint’s package installer opens.',
+              '<strong>Click Install</strong> and type your computer password. Quickpad is then in your menu.'],
+    android: ['<strong>Download</strong> the file above on your phone or tablet.',
+              '<strong>Open it.</strong> If Android asks, allow installs from your browser.',
+              '<strong>Tap Install.</strong>']
+  };
+
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function kb(n){ return Math.max(1, Math.round(n / 1024)) + ' KB'; }
+
+  /* Which platform is this? userAgentData first (Chromium), then the user-agent string. iPadOS Safari
+     reports itself as a Mac, so a "Mac" with a touch screen is treated as an iPad. */
+  function detect(){
+    var q = /[?&]platform=(windows|mac|linux|android|ios)\b/.exec(location.search);
+    if (q) return q[1];                       // preview another platform: ?platform=windows
+    var touch = navigator.maxTouchPoints || 0;
+    var p = ((navigator.userAgentData && navigator.userAgentData.platform) || '').toLowerCase();
+    if (p === 'android') return 'android';
+    if (p === 'ios' || p === 'ipados') return 'ios';
+    if (p === 'windows') return 'windows';
+    if (p === 'macos') return touch > 1 ? 'ios' : 'mac';
+    if (p === 'linux' || p === 'chrome os' || p === 'chromium os') return 'linux';
+    var ua = navigator.userAgent || '';
+    if (/Android/i.test(ua)) return 'android';
+    if (/iPhone|iPad|iPod/i.test(ua)) return 'ios';
+    if (/Macintosh|Mac OS X/i.test(ua)) return touch > 1 ? 'ios' : 'mac';
+    if (/Windows/i.test(ua)) return 'windows';
+    if (/Linux|X11|CrOS/i.test(ua)) return 'linux';
+    return 'unknown';
+  }
+
+  /* Same markup as tools/sync-downloads.py writes for the no-JavaScript list. Keep them in step. */
+  function card(key, d){
+    var h = '<article class="dcard" data-key="' + esc(key) + '" data-os="' + esc(d.os) + '" data-available="' + (d.available ? 'true' : 'false') + '">\n' +
+            '  <h4>' + esc(d.label) + '</h4>\n  <p class="dneeds">' + esc(d.needs) + '</p>\n';
+    h += d.available ? '  <a class="dfile" href="download/' + esc(d.file) + '" download>' + esc(d.file) + '</a>\n'
+                     : '  <span class="dsoon">Coming soon</span>\n';
+    h += '  <p class="dmeta">Version ' + esc(d.version) + (d.available && d.size ? ' · ' + kb(d.size) : '') + '</p>\n';
+    if (d.available) h += '  <p class="dhint">' + esc(d.hint) + '</p>\n';
+    if (d.available && d.sha256) h += '  <p class="dsha">SHA-256 <code>' + esc(d.sha256) + '</code></p>\n';
+    return h + '</article>';
+  }
+
+  var os = detect();
+  var primaryKey = PRIMARY[os];
+  var primary = document.getElementById('dl-primary');
+  var grid = document.getElementById('dl-grid');
+
+  // Other downloads: every file except the one offered as the main download.
+  grid.innerHTML = Object.keys(DOWNLOADS).filter(function(k){ return k !== primaryKey; })
+                         .map(function(k){ return card(k, DOWNLOADS[k]); }).join('\n');
+  if (os !== 'unknown') document.getElementById('dl-others-title').textContent = 'Other downloads';
+
+  var head = '<div class="dl-main"><div class="appicon" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div>';
+  var html = '', cta = 'Download Quickpad';
+  if (os === 'ios') {
+    html = head + '<strong>Quickpad isn’t on iPhone or iPad</strong><span>Use it on a Windows PC, Mac or Linux computer</span></div></div>' +
+      '<p class="dl-explain">Quickpad types into other programs for you. iPhone and iPad don’t let an app type into other apps, so there’s no version for them. ' +
+      'Open this page on the computer you write your notes on, and the right download is shown there.</p>';
+  } else if (primaryKey) {
+    var d = DOWNLOADS[primaryKey];
+    var label = os === 'linux' ? 'Linux' : d.label;
+    if (d.available) {
+      html = head + '<strong>Quickpad ' + esc(d.version) + ' for ' + esc(label) + '</strong>' +
+        '<span>' + esc(d.file) + ' · ' + kb(d.size) + ' · ' + esc(d.needs) + '</span>' +
+        '<p class="dl-hint">' + esc(d.hint) + '</p></div>' +
+        '<a class="btn" href="download/' + esc(d.file) + '" download>Download</a></div>' +
+        '<ol class="install">' + STEPS[os].map(function(s, i){ return '<li><span>' + (i + 1) + '</span><div>' + s + '</div></li>'; }).join('') + '</ol>' +
+        '<p class="fine">Updates arrive inside Quickpad: click <em>Check for updates</em> at the bottom of the panel. Every update is signed, and Quickpad refuses one that isn’t. ' +
+        (os === 'linux' ? 'The first time it opens, Quickpad offers to set up dictation (a few minutes, needs the internet). Not on Mint or Ubuntu? Use the Other Linux zip below.'
+                        : 'The installer also sets up dictation (a few minutes, needs the internet). Full steps are in READ-ME.txt inside the zip.') + '</p>' +
+        (d.sha256 ? '<p class="sha">SHA-256 <code>' + esc(d.sha256) + '</code></p>' : '');
+      cta = 'Download for ' + label;
+    } else {
+      html = head + '<strong>Quickpad for ' + esc(label) + '</strong><span>Coming soon</span></div>' +
+        '<span class="btn" role="link" aria-disabled="true">Coming soon</span></div>' +
+        '<p class="dl-explain">Quickpad for Android is on its way. In the meantime it runs on Windows, Mac and Linux computers: the downloads are below.</p>';
+    }
+  }
+  if (html) { primary.innerHTML = html; primary.hidden = false; primary.classList.add('rv'); }
+  var heroCta = document.getElementById('hero-cta');
+  if (heroCta) heroCta.textContent = cta;
+
+  /* A file for another platform asks first, inline (no pop-up): "This file is for Windows, and you're on Linux." */
+  if (os !== 'unknown') grid.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a.dfile');
+    if (!a) return;
+    var c = a.closest('.dcard'), fileOs = c.getAttribute('data-os');
+    if (fileOs === os) return;
+    e.preventDefault();
+    var old = c.querySelector('.ask'); if (old) { old.querySelector('a').focus(); return; }
+    var box = document.createElement('div');
+    box.className = 'ask'; box.setAttribute('role', 'group'); box.setAttribute('aria-live', 'polite');
+    box.innerHTML = '<p>This file is for ' + esc(fileOs === 'mac' ? 'Mac' : NAMES[fileOs]) + ', and you’re on ' + esc(NAMES[os]) + '. Download anyway?</p>' +
+      '<div class="row"><a href="' + esc(a.getAttribute('href')) + '" download>Download anyway</a><button type="button">Cancel</button></div>';
+    box.querySelector('a').addEventListener('click', function(){ setTimeout(function(){ box.remove(); }, 0); });
+    box.querySelector('button').addEventListener('click', function(){ box.remove(); a.focus(); });
+    c.appendChild(box);
+    box.querySelector('a').focus();
+  });
+})();
+</script>
 <script>
 (function(){
   document.getElementById('yr').textContent = new Date().getFullYear();
