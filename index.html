@@ -172,7 +172,11 @@ h2{font-size:clamp(36px,5.6vw,64px);line-height:1.06;font-weight:700;letter-spac
 @media (max-width:860px){.steps{grid-template-columns:1fr}}
 
 /* download */
-.dl{max-width:760px;margin:56px auto 0;background:var(--card);border-radius:28px;padding:36px;box-shadow:var(--shadow)}
+.platforms{display:flex;justify-content:center;gap:10px;margin:28px auto 0;flex-wrap:wrap}
+.plat{font:inherit;font-size:15px;font-weight:600;padding:10px 20px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink-2);cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.plat:hover{border-color:var(--accent)}
+.plat.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.dl{max-width:760px;margin:36px auto 0;background:var(--card);border-radius:28px;padding:36px;box-shadow:var(--shadow)}
 .dl-main{display:flex;align-items:center;gap:20px;padding-bottom:28px;border-bottom:1px solid var(--line)}
 .dl-main strong{display:block;font-size:24px;letter-spacing:-.02em}
 .dl-main span{color:var(--ink-2);font-size:15px}
@@ -227,7 +231,7 @@ footer a{color:var(--ink-2)}
     <h1 class="rv">Notes, one click<br><span class="grad">at a time.</span></h1>
     <p class="lede rv">A panel of buttons that types for you. Click one and your note goes into Cliniko, or any other program, exactly where your cursor is.</p>
     <div class="ctas rv">
-      <a class="btn" href="#download">Download for Linux Mint</a>
+      <a class="btn" href="#download">Download Quickpad</a>
       <a class="more" href="#features">See what it does</a>
     </div>
   </div>
@@ -383,25 +387,29 @@ Plan: <em>{Dictate Say the plan, then click Stop}</em></div>
   <div class="wrap">
     <span class="kicker rv">Download</span>
     <h2 class="rv">Ready in a minute.</h2>
-    <p class="sub rv">Made for Linux Mint. One file, one double-click.</p>
+    <p class="sub rv">One file, one double-click — for Windows, Mac or Linux.</p>
+    <div class="platforms rv" role="group" aria-label="Choose your platform" id="platform-switch">
+      <button type="button" class="plat" data-plat="windows">Windows</button>
+      <button type="button" class="plat" data-plat="mac">Mac</button>
+      <button type="button" class="plat" data-plat="linux">Linux Mint</button>
+    </div>
     <div class="dl rv">
       <div class="dl-main">
         <div class="appicon" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
         <div>
           <strong>Quickpad 3.2</strong>
-          <span>For Linux Mint 21 and newer · 114 KB</span>
+          <span id="dl-sub">For Linux Mint 21 and newer · 114 KB</span>
         </div>
-        <a class="btn" href="download/quickpad_3.2.0_all.deb" download>Download</a>
+        <a class="btn" id="dl-btn" href="download/quickpad_3.2.0_all.deb" download>Download</a>
       </div>
-      <ol class="install">
+      <ol class="install" id="dl-steps">
         <li><span>1</span><div><strong>Download</strong> the file above. It saves to your Downloads folder.</div></li>
         <li><span>2</span><div><strong>Double-click it.</strong> Linux Mint's package installer opens.</div></li>
         <li><span>3</span><div><strong>Click Install</strong> and type your computer password. Quickpad is then in your menu.</div></li>
       </ol>
-      <p class="fine">Updates arrive inside Quickpad: click <em>Check for updates</em> at the bottom of the panel. Every update is signed, and Quickpad refuses one that isn't. The first time it opens, Quickpad offers to set up dictation (a few minutes, needs the internet).</p>
-      <details class="sha"><summary>Check the download</summary><p>SHA-256 <code>4f6fbfb12d88a8ef03e3bbd4c2f3b1f58f0cbf8e1ffc77fb8e5aa1348f6e6e88</code></p></details>
+      <p class="fine" id="dl-fine">Updates arrive inside Quickpad: click <em>Check for updates</em> at the bottom of the panel. Every update is signed, and Quickpad refuses one that isn't. The first time it opens, Quickpad offers to set up dictation (a few minutes, needs the internet).</p>
+      <details class="sha"><summary>Check the download</summary><p>SHA-256 <code id="dl-sha">4f6fbfb12d88a8ef03e3bbd4c2f3b1f58f0cbf8e1ffc77fb8e5aa1348f6e6e88</code></p></details>
     </div>
-    <p class="other rv">Using Windows or a Mac? <a href="https://praxentislabs.com.au/#build">Get in touch</a> and we'll set it up with you.</p>
   </div>
 </section>
 
@@ -415,7 +423,7 @@ Plan: <em>{Dictate Say the plan, then click Stop}</em></div>
 <section class="alt final">
   <div class="wrap">
     <h2 class="rv">Spend less time typing.</h2>
-    <p class="sub rv">Quickpad is built by Praxentis Labs for clinics. Download it for Linux Mint today.</p>
+    <p class="sub rv">Quickpad is built by Praxentis Labs for clinics. Download it today, for Windows, Mac or Linux.</p>
     <div class="ctas rv">
       <a class="btn" href="#download">Download Quickpad</a>
       <a class="more" href="https://praxentislabs.com.au">More from Praxentis Labs</a>
@@ -433,6 +441,61 @@ Plan: <em>{Dictate Say the plan, then click Stop}</em></div>
 <script>
 (function(){
   document.getElementById('yr').textContent = new Date().getFullYear();
+
+  var PLATFORMS = {
+    windows: {
+      label: 'Windows', file: 'download/quickpad_3.2.0_windows.zip', size: '113 KB',
+      sha: '1768a505144cbc687889e0200b79d49cb990c0462a07a9538ad155d00d06ce18',
+      sub: 'For Windows 10 and 11 · 113 KB',
+      steps: [
+        'Download the file above. It saves to your Downloads folder.',
+        'Unzip it (right-click the file, <strong>Extract All</strong>).',
+        '<strong>Double-click install-windows.bat</strong> inside the unzipped folder. If Windows warns it’s from an unknown publisher, click <strong>More info → Run anyway</strong>. It installs Python first if you don’t already have it, then Quickpad.'
+      ]
+    },
+    mac: {
+      label: 'Mac', file: 'download/quickpad_3.2.0_mac.zip', size: '114 KB',
+      sha: '61751a63aabd082649837bdcaa854fd78889d5b7d08dce3db06df25761e1459b',
+      sub: 'For macOS 12 and newer · 114 KB',
+      steps: [
+        'Download the file above. It saves to your Downloads folder.',
+        'Double-click it in Finder to unzip it.',
+        '<strong>Double-click install-mac.command</strong> inside the unzipped folder. The first time, macOS warns it’s from an unidentified developer — right-click it and choose <strong>Open</strong> instead.'
+      ]
+    },
+    linux: {
+      label: 'Linux Mint', file: 'download/quickpad_3.2.0_all.deb', size: '114 KB',
+      sha: '4f6fbfb12d88a8ef03e3bbd4c2f3b1f58f0cbf8e1ffc77fb8e5aa1348f6e6e88',
+      sub: 'For Linux Mint 21 and newer · 114 KB',
+      steps: [
+        '<strong>Download</strong> the file above. It saves to your Downloads folder.',
+        '<strong>Double-click it.</strong> Linux Mint’s package installer opens.',
+        '<strong>Click Install</strong> and type your computer password. Quickpad is then in your menu.'
+      ]
+    }
+  };
+
+  function detectPlatform(){
+    var ua = navigator.userAgent || '';
+    if (/Windows/i.test(ua)) return 'windows';
+    if (/Macintosh|Mac OS X/i.test(ua)) return 'mac';
+    return 'linux';
+  }
+
+  function renderPlatform(key){
+    var p = PLATFORMS[key] || PLATFORMS.linux;
+    document.getElementById('dl-sub').textContent = p.sub;
+    document.getElementById('dl-btn').setAttribute('href', p.file);
+    document.getElementById('dl-sha').textContent = p.sha;
+    var ol = document.getElementById('dl-steps');
+    ol.innerHTML = p.steps.map(function(s, i){ return '<li><span>'+(i+1)+'</span><div>'+s+'</div></li>'; }).join('');
+    document.querySelectorAll('.plat').forEach(function(b){ b.classList.toggle('on', b.dataset.plat === key); });
+  }
+
+  document.querySelectorAll('.plat').forEach(function(b){
+    b.addEventListener('click', function(){ renderPlatform(b.dataset.plat); });
+  });
+  renderPlatform(detectPlatform());
 
   var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){
     es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
