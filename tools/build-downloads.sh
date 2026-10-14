@@ -5,8 +5,8 @@
 #
 # Files are read from the git ref with `git show`, never from the app repo's working tree, so whatever branch is
 # checked out there doesn't matter and nothing in it is changed. Output goes to download/ next to index.html:
-#   quickpad-<version>-windows.zip   Quickpad/quickpad.py, install-windows.bat (CRLF), READ-ME.txt (CRLF)
-#   quickpad-<version>-mac.zip       Quickpad/quickpad.py, install-mac.command (executable), READ-ME.txt
+#   quickpad-<version>-windows.zip   Quickpad/quickpad.py, install-windows.bat (CRLF), assets/Quickpad.ico, READ-ME.txt (CRLF)
+#   quickpad-<version>-mac.zip       Quickpad/quickpad.py, install-mac.command (executable), assets/Quickpad.icns, READ-ME.txt
 #   quickpad-<version>-linux.zip     Quickpad/quickpad.py, install-linux.sh, install-mint.sh, install-omarchy.sh, READ-ME.txt
 # The zips are reproducible: same ref in, same bytes out (fixed timestamps = the commit's time, sorted entries, no
 # extra attributes). At the end it prints the size and SHA-256 of each file for the DOWNLOADS object in index.html.
@@ -48,6 +48,7 @@ D="$WORK/windows/Quickpad"; mkdir -p "$D"
 app_file quickpad.py "$D/quickpad.py" 644
 app_file install-windows.bat "$D/install-windows.bat" 644
 crlf "$D/install-windows.bat"   # cmd.exe mis-handles labels/goto in LF-only batch files
+mkdir -p "$D/assets"; app_file assets/Quickpad.ico "$D/assets/Quickpad.ico" 644   # Start Menu shortcut icon
 cat > "$D/READ-ME.txt" <<EOF
 Quickpad $VERSION for Windows
 =============================
@@ -57,10 +58,13 @@ Quickpad $VERSION for Windows
 
 2. Open the extracted Quickpad folder and double-click install-windows.bat.
    If Windows says "Windows protected your PC", click "More info", then "Run anyway".
+   That's normal for a small app that isn't registered with Microsoft yet. You don't need
+   "Run as administrator".
 
 3. Python. Quickpad runs on Python, which is free. If it isn't installed, the installer
    installs it for you, then asks you to close the window and double-click
-   install-windows.bat again.
+   install-windows.bat again. Python is installed just for your account, so no admin
+   password is needed.
    If that fails, install Python 3.12 from https://www.python.org/downloads/windows/ :
    on the first screen tick "Add python.exe to PATH", then run install-windows.bat again.
 
@@ -70,6 +74,10 @@ Quickpad $VERSION for Windows
    still works and Settings > Dictation can try again later.
 
 5. Quickpad opens. Next time, find "Quickpad" in the Start menu.
+
+Where is Settings? It's a button at the top of the Quickpad panel itself (the small window
+with your buttons): Edit buttons, Settings, Back up..., Restore.... If the panel has rolled
+up into a thin bar, click the bar to open it, or right-click it for Settings.
 
 Options (run from a Command Prompt in the Quickpad folder):
    install-windows.bat --autostart       also start Quickpad when you log in
@@ -87,6 +95,7 @@ WIN_ZIP="$(make_zip windows)"
 D="$WORK/mac/Quickpad"; mkdir -p "$D"
 app_file quickpad.py "$D/quickpad.py" 644
 app_file install-mac.command "$D/install-mac.command" 755
+mkdir -p "$D/assets"; app_file assets/Quickpad.icns "$D/assets/Quickpad.icns" 644   # the .app's icon
 cat > "$D/READ-ME.txt" <<EOF
 Quickpad $VERSION for Mac
 =========================
