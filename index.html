@@ -444,23 +444,23 @@ Plan: <em>{Dictate Say the plan, then click Stop}</em></div>
 
   var PLATFORMS = {
     windows: {
-      label: 'Windows', file: 'download/quickpad_3.2.0_windows.zip', size: '113 KB',
-      sha: '1768a505144cbc687889e0200b79d49cb990c0462a07a9538ad155d00d06ce18',
-      sub: 'For Windows 10 and 11 · 113 KB',
+      label: 'Windows', file: 'download/quickpad_3.2.0_windows.zip', size: '128 KB',
+      sha: '82d7b59464782704d7f7be89e415914aff5931f9dbd4bd1755fc42039c44dcbb',
+      sub: 'For Windows 10 and 11 · 128 KB',
       steps: [
         'Download the file above. It saves to your Downloads folder.',
         'Unzip it (right-click the file, <strong>Extract All</strong>).',
-        '<strong>Double-click install-windows.bat</strong> inside the unzipped folder. If Windows warns it’s from an unknown publisher, click <strong>More info → Run anyway</strong>. It installs Python first if you don’t already have it, then Quickpad.'
+        '<strong>Double-click install-windows.bat</strong> inside the unzipped folder. Windows will likely warn it’s unrecognised — click <strong>More info → Run anyway</strong> (you do <em>not</em> need to run as administrator). It installs Python first if you don’t already have it, then Quickpad. See README-windows.txt inside for the full walkthrough.'
       ]
     },
     mac: {
-      label: 'Mac', file: 'download/quickpad_3.2.0_mac.zip', size: '114 KB',
-      sha: '61751a63aabd082649837bdcaa854fd78889d5b7d08dce3db06df25761e1459b',
-      sub: 'For macOS 12 and newer · 114 KB',
+      label: 'Mac', file: 'download/quickpad_3.2.0_mac.zip', size: '332 KB',
+      sha: '31f5ce7abb2de5eacaa453a083dd6c8687551d1b12ef5a59c54eaf00684adbc2',
+      sub: 'For macOS 12 and newer · 332 KB',
       steps: [
         'Download the file above. It saves to your Downloads folder.',
         'Double-click it in Finder to unzip it.',
-        '<strong>Double-click install-mac.command</strong> inside the unzipped folder. The first time, macOS warns it’s from an unidentified developer — right-click it and choose <strong>Open</strong> instead.'
+        '<strong>Right-click install-mac.command and choose Open</strong> (not a plain double-click) — macOS warns it’s from an unidentified developer the first time; click <strong>Open</strong> again to confirm. See README-mac.txt inside for the full walkthrough.'
       ]
     },
     linux: {
